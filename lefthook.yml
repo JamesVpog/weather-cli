@@ -1,0 +1,5 @@
+pre-commit:
+  commands:
+    gitleaks:
+      tags: security secret
+      run: gitleaks protect --staged --verbose
