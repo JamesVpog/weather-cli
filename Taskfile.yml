@@ -1,41 +1,41 @@
 # https://taskfile.dev
 
-version: '3'
+version: "3"
 
-output: 
+output:
   group:
-    begin: '::group::{{.TASK}}'
-    end: '::endgroup::'
-    
+    begin: "::group::{{.TASK}}"
+    end: "::endgroup::"
+
 tasks:
   fmt:
     desc: "Format with go fmt"
     cmds:
       - go fmt ./...
-  lint:  
+  lint:
     desc: "Lint with golangci-lint default settings"
     deps:
       - fmt
     cmds:
       - golangci-lint run
-  
+
   test:
     desc: "Runs test suite"
     cmds:
-      - go test ./...
-    
+      - go test -v ./...
+
   build:
     desc: "Builds the project"
     sources:
-      - './**/*.go'
+      - "./**/*.go"
     generates:
       - bin/weather
     cmds:
       - go build -o bin/weather ./cmd/weather
-    
+
   ci:
     desc: "Lint, test, and build the code"
     deps:
-      - lint 
+      - lint
       - test
-      - build 
+      - build

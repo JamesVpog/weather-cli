@@ -3,5 +3,5 @@ package weather
 
 func ConvertFtoC(f float64) float64 {
 	// returns the equivalent farenheit in celsius
-	return 0
+	return (f - 32) * 5/9
 }
