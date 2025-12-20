@@ -59,12 +59,15 @@ func TestParseWeatherData(t *testing.T) {
 	if got.Main.Temp != 279.07 {
 		t.Errorf("got %v, want %f", got, 279.07)
 	}
-	
+
+	if got.Main.Humidity != 97 {
+		t.Errorf("got %d, want %d:", got.Main.Humidity, 97)
+	}
 
 	if len(got.Weather) == 0 {
 		t.Fatalf("Expected at least 1 weather description, got 0")
 	}
-	
+
 	if got.Weather[0].Description != "overcast clouds" {
 		t.Errorf("got %s, want %s", got.Weather[0].Description, "overcast clouds")
 	}
